@@ -37,7 +37,7 @@
           <a class="nav-link" href="#">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Asociate NGOs</a>
+          <a class="nav-link" href="{{ url('/asociate') }}">Asociate NGOs</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">COVID Help</a>
