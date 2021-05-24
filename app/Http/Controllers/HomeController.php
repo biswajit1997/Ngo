@@ -25,18 +25,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $id =Auth::user()->id;
-        $data = User::where('id',$id)->first();
-       
-        return view('home',compact('data'));
+        $id = Auth::user()->id;
+        $data = User::where('id', $id)->first();
+        $response = User::get();
+        $deta  = [];
+        foreach ($response as $item) {
+            if ($item->role == 'ngo') {
+                $deta[] = $item;
+            }
+        }
+        return view('home', compact('data', 'deta'));
     }
     public function update(Request $request)
     {
-        $id =Auth::user()->id;
-        $org_ic_pdf =$request->org_ic_pdf->store('org_ic_pdf','public');
-        $mip_pdf =$request->mip_pdf->store('mip_pdf','public');
-        $org_logo =$request->org_logo->store('org_logo','public');
-       $res = User::where('id',$id)->update([
+        $id = Auth::user()->id;
+        $org_ic_pdf = $request->org_ic_pdf->store('org_ic_pdf', 'public');
+        $mip_pdf = $request->mip_pdf->store('mip_pdf', 'public');
+        $org_logo = $request->org_logo->store('org_logo', 'public');
+        $res = User::where('id', $id)->update([
             'name' => $request->name,
             'email' => $request->email,
             'district' => $request->district,
@@ -50,14 +56,42 @@ class HomeController extends Controller
             'md_org' => $request->md_org,
             'gender' => $request->gender,
             'org_logo' => $org_logo,
-            
+
         ]);
-        if($res){
-            $data = User::where('id',$id)->first();
-            return view('home',compact('data'));
-           
+        if ($res) {
+            $data = User::where('id', $id)->first();
+            return view('home', compact('data'));
         }
-       
-    
+    }
+    public function search(Request $request)
+    {
+        $id = Auth::user()->id;
+        $data = User::where('id', $id)->first();
+        $res = User::where('district', $request->dist)->get();
+        $deta =[];
+        foreach ($res as $item) {
+            if ($item->role == 'ngo') {
+                $deta[] = $item;
+            }
+        }
+        return view('home', ['response' => $res,'data'=>$data,'deta'=>$deta]);
+    }
+     /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        return dd($id);
+        // $res = User::destroy($id);
+        // if($res){
+        //     return redirect()->back()->with(['message' => 'delete Successfull', 'alert' => 'alert-success']);
+        
+        //    }else{
+        //     return redirect()->back()->with(['message' => 'delete faield', 'alert' => 'alert-danger']);
+        
+        //    }
     }
 }

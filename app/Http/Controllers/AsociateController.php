@@ -15,7 +15,13 @@ class AsociateController extends Controller
     public function index()
     {
         $res = User::get();
-        return view('asociate',['response'=>$res]);
+        $response =[];
+        foreach ($res as $item) {
+            if ($item->role == 'ngo') {
+                $response[] = $item;
+            }
+        }
+        return view('asociate',['response'=> $response]);
     }
 
     /**
