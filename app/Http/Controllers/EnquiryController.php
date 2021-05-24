@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Enquiry;
 use Illuminate\Http\Request;
 
-class AsociateController extends Controller
+class EnquiryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class AsociateController extends Controller
      */
     public function index()
     {
-        $res = User::get();
-        return view('asociate',['response'=>$res]);
+        
     }
 
     /**
@@ -23,11 +22,24 @@ class AsociateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function search(Request $request)
+    public function create(Request $request)
     {
-        $res = User::where('district',$request->dist)->get();
-        return view('asociate',['response'=>$res]);
-      
+        $res =[null];
+       $res = Enquiry::Create([
+           'name'=>$request->name,
+           'email'=>$request->email,
+           'mobile'=>$request->mobile,
+           'district'=>$request->district,
+           'massage'=>$request->massage,
+       ]);
+   if($res){
+    return redirect()->back()->with(['message' => 'Enquiry Successfull', 'alert' => 'alert-success']);
+
+   }else{
+    return redirect()->back()->with(['message' => 'Enquiry faield', 'alert' => 'alert-danger']);
+
+   }
+    
     }
 
     /**
@@ -36,9 +48,9 @@ class AsociateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function getDist( $dist)
+    public function store(Request $request)
     {
-        return view('asociate',['dist'=>$dist]);
+        //
     }
 
     /**
@@ -49,9 +61,7 @@ class AsociateController extends Controller
      */
     public function show($id)
     {
-
-        $res = User::where('id',$id)->first();
-        return view('ngo',['response'=>$res]);
+        //
     }
 
     /**

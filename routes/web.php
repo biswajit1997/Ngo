@@ -17,10 +17,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/about', function () {
+    return view('about');
+});
 
+// Route::get('/about', [App\Http\Controllers\AsociateController::class, 'index'])->name('index');
+Route::post('/about/enquiry', [App\Http\Controllers\EnquiryController::class, 'create'])->name('enquiry');
 Route::get('/asociate', [App\Http\Controllers\AsociateController::class, 'index'])->name('asociate');
 Route::post('/asociate', [App\Http\Controllers\AsociateController::class, 'search']);
+Route::get('/single/ngo/{id}', [App\Http\Controllers\AsociateController::class, 'show']);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/home/update', [App\Http\Controllers\HomeController::class, 'update'])->name('update');

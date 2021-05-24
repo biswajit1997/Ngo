@@ -39,7 +39,7 @@
                             <td><img src="{{asset('storage/'.$item->org_logo)}}" alt="logo" width="100px" height="50px" /></td>
                             <td>{{$item->mobile}}</td>
                             <td>{{$item->district}}</td>
-                            <td><button class="btn btn-primary">View</button></td>
+                            <td><a href="single/ngo/{{$item->id}}"><button class="btn btn-primary">View</button></a></td>
                         </tr>
                         @endforeach
                     </tbody>
