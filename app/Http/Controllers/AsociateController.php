@@ -23,9 +23,11 @@ class AsociateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function search(Request $request)
     {
-        //
+        $res = User::where('district',$request->dist)->get();
+        return view('asociate',['response'=>$res]);
+      
     }
 
     /**
@@ -34,9 +36,9 @@ class AsociateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function getDist( $dist)
     {
-        //
+        return view('asociate',['dist'=>$dist]);
     }
 
     /**

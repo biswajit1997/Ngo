@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/asociate', [App\Http\Controllers\AsociateController::class, 'index'])->name('asociate');
+Route::post('/asociate', [App\Http\Controllers\AsociateController::class, 'search']);
 
 Auth::routes();
 
