@@ -59,7 +59,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 @if(Auth::user()->role == 'admin')
-                                <a class="dropdown-item" href="">
+                                <a class="dropdown-item" href="{{url('/enquiry/list')}}">
                                        
                                        {{ __('Enquiry list') }}
                                    </a>

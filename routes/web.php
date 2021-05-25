@@ -20,9 +20,13 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 });
+// Route::get('/enquiry/list', function () {
+//     return view('enquiry-list');
+// });
 
 // Route::get('/about', [App\Http\Controllers\AsociateController::class, 'index'])->name('index');
 Route::post('/about/enquiry', [App\Http\Controllers\EnquiryController::class, 'create'])->name('enquiry');
+Route::get('/enquiry/list', [App\Http\Controllers\EnquiryController::class, 'index']);
 Route::get('/asociate', [App\Http\Controllers\AsociateController::class, 'index'])->name('asociate');
 Route::post('/asociate', [App\Http\Controllers\AsociateController::class, 'search']);
 Route::get('/single/ngo/{id}', [App\Http\Controllers\AsociateController::class, 'show']);

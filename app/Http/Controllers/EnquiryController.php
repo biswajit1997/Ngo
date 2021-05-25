@@ -14,7 +14,8 @@ class EnquiryController extends Controller
      */
     public function index()
     {
-        
+        $res =Enquiry::get();
+        return view('enquiry-list',['response'=>$res]);
     }
 
     /**

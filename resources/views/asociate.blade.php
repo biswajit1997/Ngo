@@ -38,7 +38,7 @@
                         <tr>
                             <td>{{$key +1}}</td>
                             <td><img src="{{asset('storage/'.$item->org_logo)}}" alt="logo" width="100px" height="50px" /></td>
-                            <td>{{$item->mobile}}</td>
+                            <td><a href="tel: {{$item->mobile}}">{{$item->mobile}}</a></td>
                             <td>{{$item->district}}</td>
                             <td><a href="single/ngo/{{$item->id}}"><button class="btn btn-primary">View</button></a></td>
                         </tr>
