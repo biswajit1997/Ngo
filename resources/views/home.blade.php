@@ -4,11 +4,14 @@
 @if ($data->role == 'ngo')
 <div class="container">
     <div class="row justify-content-center">
+
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
 
-                    <div>{{ __('Dashboard') }}</div>
+                    <div>
+                        <h3>{{ __('Profile') }}
+                    </div>
 
                     <div class="text-right">
                         <img src="{{ asset('storage/'.$data->org_logo)}}" alt="image" width="100px" height="50px">
@@ -48,10 +51,7 @@
                                 <label>Organization Address</label> : {{$data->organization_address}}
 
                             </div>
-                            <!-- <div class="col-4">
-                                <label>Organization Certificate</label> : {{$data->org_ic_pdf}}
 
-                            </div> -->
                         </div>
                         <div class="row">
                             <div class="col-4">
@@ -63,34 +63,96 @@
 
                             </div>
                             <div class="col-4">
-                                <label>gender</label> : {{$data->gender}}
+                                <label>Gender</label> : {{$data->gender}}
 
                             </div>
 
                         </div>
                         <div class="row">
-                            <!-- <div class="col-4">
-                                <label>mip_pdf</label> : {{$data->mip_pdf}}
 
-                            </div> -->
 
                             <div class="col-4">
                                 <label>WhatsApp Number</label> : {{$data->wp_number}}
 
                             </div>
                             <div class="col-4">
-                                <label>md_org</label> : {{$data->md_org}}
+                                <label>Designation in the organization
+                                </label> : {{$data->md_org}}
 
                             </div>
                         </div>
 
-                        <div class="text-right">
-                            <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
-                        </div>
 
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col-md-12">
+            <hr />
+        </div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+
+                    <div>{{ __('Documents') }}</div>
+
+
+
+
+                </div>
+
+
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr class="text-center">
+                                <td>
+                                    Organization Incorparate Certificate
+                                </td>
+                                <td>
+                                    <a href="{{ asset('storage/'.$data->org_ic_pdf)}}" target="_blank" class="btn btn-warning btn-sm mr-3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill mr-2" viewBox="0 0 16 16">
+                                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                        </svg>View</a>
+                                    <a href="{{ asset('storage/'.$data->org_ic_pdf)}}" class="btn btn-primary btn-sm" download="Organization Incorparate Certificate"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill mr-2" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
+                                        </svg>Download</a>
+                                    <!-- {{$data->org_ic_pdf}} -->
+                                </td>
+                            </tr>
+                            <tr class="text-center">
+                                <td>
+                                    Id proof
+                                </td>
+                                <td>
+
+
+                                    <a href="{{ asset('storage/'.$data->mip_pdf)}}" target="_blank" class="btn btn-warning btn-sm mr-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill mr-2" viewBox="0 0 16 16">
+                                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                        </svg>View</a>
+                                    <a href="{{ asset('storage/'.$data->mip_pdf)}}" class="btn btn-primary btn-sm" download="Id proof">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill mr-2" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
+                                        </svg>Download</a>
+                                    <!-- {{$data->mip_pdf}} -->
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+
+
+
+                </div>
+
+            </div>
+            <div class="text-right mt-3">
+                <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
+            </div>
+
         </div>
     </div>
 </div>

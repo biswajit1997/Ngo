@@ -7,7 +7,7 @@
 
         <div class="mt-5">
             <form method="post" action="{{ route('asociate') }}">
-            @csrf
+                @csrf
                 <div class="d-flex">
                     <label>Choose District :</label>
                     <select class="form-control" id="district" name="dist">
@@ -18,7 +18,7 @@
                     </select>
                 </div>
                 <div class="text-right mb-2">
-                    <input type="submit" name="submit" class="btn btn-secondary" />
+                    <input type="submit" name="submit" class="btn btn-secondary btn-sm" />
                 </div>
             </form>
 
@@ -30,7 +30,7 @@
                         <th>Logo</th>
                         <th>Mobile</th>
                         <th>District</th>
-                        <th>Action</th>
+                        <th class="text-center">Action</th>
                     </thead>
                     <tbody>
                         @foreach($response as $key =>$item)
@@ -40,7 +40,9 @@
                             <td><img src="{{asset('storage/'.$item->org_logo)}}" alt="logo" width="100px" height="50px" /></td>
                             <td><a href="tel: {{$item->mobile}}">{{$item->mobile}}</a></td>
                             <td>{{$item->district}}</td>
-                            <td><a href="single/ngo/{{$item->id}}"><button class="btn btn-primary">View</button></a></td>
+                            <td class="text-center"><a href="single/ngo/{{$item->id}}" class="btn btn-warning btn-sm">View</a>
+                                  
+                                    </td>
                         </tr>
                         @endif
                         @endforeach
