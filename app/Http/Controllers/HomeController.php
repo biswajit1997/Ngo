@@ -84,14 +84,14 @@ class HomeController extends Controller
      */
     public function destroy($id)
     {
-        return dd($id);
-        // $res = User::destroy($id);
-        // if($res){
-        //     return redirect()->back()->with(['message' => 'delete Successfull', 'alert' => 'alert-success']);
         
-        //    }else{
-        //     return redirect()->back()->with(['message' => 'delete faield', 'alert' => 'alert-danger']);
+        $res = User::destroy($id);
+        if($res){
+            return redirect()->back()->with(['message' => 'delete Successfull', 'alert' => 'alert-success']);
         
-        //    }
+           }else{
+            return redirect()->back()->with(['message' => 'delete faield', 'alert' => 'alert-danger']);
+        
+           }
     }
 }
