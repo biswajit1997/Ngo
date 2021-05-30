@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -84,6 +85,7 @@ class HomeController extends Controller
      */
     public function destroy($id)
     {
+        Session::put('undo', $id);
         
         $res = User::destroy($id);
         if($res){
@@ -93,5 +95,25 @@ class HomeController extends Controller
             return redirect()->back()->with(['message' => 'delete faield', 'alert' => 'alert-danger']);
         
            }
+    }
+
+    public function restore($id){
+       $res= User::withTrashed()
+        ->where('id', $id)
+        ->restore();
+        $id = Auth::user()->id;
+        $data = User::where('id', $id)->first();
+        $response = User::get();
+        $deta  = [];
+        foreach ($response as $item) {
+            if ($item->role == 'ngo') {
+                $deta[] = $item;
+            }
+        }
+       
+        if($res){
+            Session::forget('undo');
+            return redirect()->route('home')->with(['message' => 'Restore Successfull', 'alert' => 'alert-success']);
+        }
     }
 }

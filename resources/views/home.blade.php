@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@if ($data->role == 'ngo')
+@if (Auth::user()->role == 'ngo')
 <div class="container">
     <div class="row justify-content-center">
 
@@ -194,9 +194,14 @@
 
                         <div>
                             @if(session()->has('message'))
-                            <div class="alert {{session('alert') ?? 'alert-info'}}">
+                            <div class="alert {{session('alert') ?? 'alert-info'}} ">
                                 {{ session('message') }}
+                                @if(Session::has('undo'))
+                                <a href="/home/ngo/undo/{{Session::get('undo')}}">Undo</a>
+                                @endif
+
                             </div>
+
                             @endif
                             <table class="table table-bordered ">
                                 <thead>

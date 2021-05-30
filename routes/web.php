@@ -37,3 +37,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::post('/home/update', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
 Route::post('/home/search', [App\Http\Controllers\HomeController::class, 'search'])->name('search');
 Route::get('/home/ngo/delete/{id}', [App\Http\Controllers\HomeController::class, 'destroy']);
+Route::get('/home/ngo/undo/{id}', [App\Http\Controllers\HomeController::class, 'restore']);
