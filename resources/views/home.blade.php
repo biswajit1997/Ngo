@@ -179,7 +179,8 @@
                             @csrf
                             <div class="d-flex">
                                 <label>Choose District :</label>
-                                <select class="form-control" id="district" name="dist">
+                                <select class="form-control" id="district" value="" name="dist">
+                                    <option value="">select</option>
                                     <option value="Angul">Anugul</option>
                                     <option value="Dhenkanal">Dhenkanal</option>
                                     <option value="Cuttack">Cuttack</option>
@@ -194,17 +195,24 @@
 
                         <div>
                             @if(session()->has('message'))
-                            <div class="alert {{session('alert') ?? 'alert-info'}} ">
-                                {{ session('message') }}
+                            <div class="alert {{session('alert') ?? 'alert-info'}} alert-dismissible fade show" id="success-alert" role="alert">
+                                <strong>{{ session('message') }}</strong>
                                 @if(Session::has('undo'))
                                 <a href="/home/ngo/undo/{{Session::get('undo')}}">Undo</a>
                                 @endif
-
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
+                            <script>
+                                $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
+                                    $("#success-alert").slideUp(500);
+                                });
+                            </script>
 
                             @endif
                             <table class="table table-bordered ">
-                                <thead>
+                                <thead class="bg-info text-white">
                                     <th>Slno</th>
                                     <th>Logo</th>
                                     <th>Mobile</th>
@@ -212,6 +220,7 @@
                                     <th colspan="2" class="text-center">Action</th>
                                 </thead>
                                 <tbody>
+
                                     @foreach($deta as $key => $item)
                                     @if ($item->role == 'ngo')
                                     <tr>
@@ -224,8 +233,16 @@
                                     </tr>
                                     @endif
                                     @endforeach
+
                                 </tbody>
                             </table>
+                            @if(!$deta)
+                            <div class="text-center">
+                                <img src="{{asset('storage/NewImage.png')}}" alt="image" width="400px" height="150px">
+
+                            </div>
+
+                            @endif
                         </div>
                     </div>
 

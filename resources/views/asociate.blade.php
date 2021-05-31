@@ -25,7 +25,7 @@
 
             <div>
                 <table class="table table-bordered ">
-                    <thead>
+                    <thead class="bg-info text-white">
                         <th>Slno</th>
                         <th>Logo</th>
                         <th>Mobile</th>
@@ -41,13 +41,15 @@
                             <td><a href="tel: {{$item->mobile}}">{{$item->mobile}}</a></td>
                             <td>{{$item->district}}</td>
                             <td class="text-center"><a href="single/ngo/{{$item->id}}" class="btn btn-warning btn-sm">View</a>
-                                  
-                                    </td>
+
+                            </td>
                         </tr>
                         @endif
                         @endforeach
+
                     </tbody>
                 </table>
+
             </div>
         </div>
 
