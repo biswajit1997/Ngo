@@ -25,7 +25,7 @@ class EnquiryController extends Controller
      */
     public function create(Request $request)
     {
-        $res =[null];
+        
        $res = Enquiry::Create([
            'name'=>$request->name,
            'email'=>$request->email,

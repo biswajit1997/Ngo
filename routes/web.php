@@ -20,12 +20,18 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 });
+Route::get('/contact', function () {
+    return view('contact');
+});
+Route::get('/services', function () {
+    return view('services');
+});
 // Route::get('/enquiry/list', function () {
 //     return view('enquiry-list');
 // });
 
 // Route::get('/about', [App\Http\Controllers\AsociateController::class, 'index'])->name('index');
-Route::post('/about/enquiry', [App\Http\Controllers\EnquiryController::class, 'create'])->name('enquiry');
+Route::post('/contact/enquiry', [App\Http\Controllers\EnquiryController::class, 'create'])->name('enquiry');
 Route::get('/enquiry/list', [App\Http\Controllers\EnquiryController::class, 'index']);
 Route::get('/asociate', [App\Http\Controllers\AsociateController::class, 'index'])->name('asociate');
 Route::post('/asociate', [App\Http\Controllers\AsociateController::class, 'search']);
