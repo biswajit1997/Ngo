@@ -3,6 +3,7 @@
     <div class="">
         <div class="text-center mt-3">
             <h3>Asociate NGOs</h3>
+           
         </div>
 
         <div class="mt-5">
@@ -37,11 +38,10 @@
                         @if ($item->role == 'ngo')
                         <tr>
                             <td>{{$key +1}}</td>
-                            <td><img src="{{asset('storage/'.$item->org_logo)}}" alt="logo" width="100px" height="50px" /></td>
+                            <td><img src="{{env('MIX_STORAGE_PATH').$item->org_logo}}" alt="logo" width="100px" height="50px" /></td>
                             <td><a href="tel: {{$item->mobile}}">{{$item->mobile}}</a></td>
                             <td>{{$item->district}}</td>
                             <td class="text-center"><a href="single/ngo/{{$item->id}}" class="btn btn-warning btn-sm">View</a>
-
                             </td>
                         </tr>
                         @endif

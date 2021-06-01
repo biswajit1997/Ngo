@@ -14,7 +14,7 @@
                     </div>
 
                     <div class="text-right">
-                        <img src="{{ asset('storage/'.$data->org_logo)}}" alt="image" width="100px" height="50px">
+                        <img src="{{ env('MIX_STORAGE_PATH').$data->org_logo}}" alt="image" width="100px" height="50px">
 
                     </div>
 
@@ -110,11 +110,11 @@
                                     Organization Incorparate Certificate
                                 </td>
                                 <td>
-                                    <a href="{{ asset('storage/'.$data->org_ic_pdf)}}" target="_blank" class="btn btn-warning btn-sm mr-3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill mr-2" viewBox="0 0 16 16">
+                                    <a href="{{ env('MIX_STORAGE_PATH').$data->org_ic_pdf}}" target="_blank" class="btn btn-warning btn-sm mr-3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill mr-2" viewBox="0 0 16 16">
                                             <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
                                             <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
                                         </svg>View</a>
-                                    <a href="{{ asset('storage/'.$data->org_ic_pdf)}}" class="btn btn-primary btn-sm" download="Organization Incorparate Certificate"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill mr-2" viewBox="0 0 16 16">
+                                    <a href="{{ env('MIX_STORAGE_PATH').$data->org_ic_pdf}}" class="btn btn-primary btn-sm" download="Organization Incorparate Certificate"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill mr-2" viewBox="0 0 16 16">
                                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
                                         </svg>Download</a>
                                     <!-- {{$data->org_ic_pdf}} -->
@@ -127,12 +127,12 @@
                                 <td>
 
 
-                                    <a href="{{ asset('storage/'.$data->mip_pdf)}}" target="_blank" class="btn btn-warning btn-sm mr-3">
+                                    <a href="{{ env('MIX_STORAGE_PATH').$data->mip_pdf}}" target="_blank" class="btn btn-warning btn-sm mr-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill mr-2" viewBox="0 0 16 16">
                                             <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
                                             <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
                                         </svg>View</a>
-                                    <a href="{{ asset('storage/'.$data->mip_pdf)}}" class="btn btn-primary btn-sm" download="Id proof">
+                                    <a href="{{ env('MIX_STORAGE_PATH').$data->mip_pdf}}" class="btn btn-primary btn-sm" download="Id proof">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill mr-2" viewBox="0 0 16 16">
                                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
                                         </svg>Download</a>
@@ -165,7 +165,7 @@
 
                     <div>{{ __(' Admin Dashboard') }}</div>
 
-
+                  
 
 
                 </div>
@@ -225,7 +225,7 @@
                                     @if ($item->role == 'ngo')
                                     <tr>
                                         <td>{{$key+1}}</td>
-                                        <td><img src="{{asset('storage/'.$item->org_logo)}}" alt="logo" width="100px" height="50px" /></td>
+                                        <td><img src="{{env('MIX_STORAGE_PATH').$item->org_logo}}" alt="logo" width="100px" height="50px" /></td>
                                         <td>{{$item->mobile}}</td>
                                         <td>{{$item->district}}</td>
                                         <td class="text-center"><a href="single/ngo/{{$item->id}}"><button class="btn btn-primary">View</button></a></td>
@@ -419,3 +419,6 @@
 </div>
 @else
 @endif
+
+@section('scripts')
+@stop
